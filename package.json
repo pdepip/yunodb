@@ -34,7 +34,7 @@
     "JSONStream": "^1.1.1",
     "commander": "^2.9.0",
     "jsonpath-plus": "^0.15.0",
-    "leveldown": "^5.4.1",
+    "leveldown": "^3.0.1",
     "levelup": "^4.3.2",
     "lodash": "^4.11.1",
     "mkdirp": "^0.5.1",
