@@ -1,6 +1,6 @@
 var vector = require('./vector.js')
 var _ = require('lodash')
-var jsonpath = require('jsonpath-plus')
+const { JSONPath } = require('jsonpath-plus')
 
 function Preprocessor (opts) {
   if (!(this instanceof Preprocessor)) return new Preprocessor(opts)
@@ -49,7 +49,7 @@ Preprocessor.prototype.cachePaths = function (opts) {
 
 Preprocessor.prototype.pick = function (object) {
   return _.zipObject(this.paths, this.paths.map(function (path) {
-    return jsonpath({ json: object, path: path }).join(' ')
+    return JSONPath({ json: object, path: path }).join(' ')
   }))
 }
 

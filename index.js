@@ -5,7 +5,8 @@ var leveldown = require('leveldown')
 var searchIndex = require('search-index')
 var _ = require('lodash')
 var mkdirp = require('mkdirp')
-var jsonpath = require('jsonpath-plus')
+// var jsonpath = require('jsonpath-plus')
+const { JSONPath } = require('jsonpath-plus')
 
 var preprocess = require('./preprocess/preprocess.js')
 var Cursor = require('./cursor.js')
@@ -53,7 +54,10 @@ function Yuno (opts, cb) {
 }
 
 Yuno.prototype.getKey = function (doc) {
-  return jsonpath({ json: doc, path: this.keyField })[0]
+  const result = JSONPath({ path: this.keyField, json: doc })
+  console.log(result)
+  return result[0]
+  // return JSONPATH({ json: doc, path: this.keyField })[0]
 }
 
 Yuno.prototype.putOp = function (doc) {
