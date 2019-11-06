@@ -1,6 +1,7 @@
 var path = require('path')
 
 var levelup = require('levelup')
+var leveldown = require('leveldown')
 var searchIndex = require('search-index')
 var _ = require('lodash')
 var mkdirp = require('mkdirp')
@@ -29,7 +30,7 @@ function Yuno (opts, cb) {
   mkdirp.sync(opts.location)
 
   this.docstorePath = path.join(opts.location, 'docstore')
-  this.docstore = levelup(this.docstorePath, docstoreOpts)
+  this.docstore = levelup(leveldown(this.docstorePath), docstoreOpts)
 
   this.indexPath = path.join(opts.location, 'index')
 
